@@ -9,4 +9,4 @@
 6) Click on Run Now  
 
 
-NOTE: Review these docs: https://learn.microsoft.com/en-us/azure/databricks/jobs/how-to/use-jars-in-workflows
+Reference: https://learn.microsoft.com/en-us/azure/databricks/jobs/how-to/use-jars-in-workflows
