@@ -1,0 +1,35 @@
+resources:
+  jobs:
+    New_Job_May_01_2025_09_58_PM:
+      name: New Job May 01, 2025, 09:58 PM
+      tasks:
+        - task_key: Read_parquet_write_delta
+          spark_jar_task:
+            jar_uri: ""
+            main_class_name: com.example.jar.ParquetToDeltaWriter
+            parameters:
+              - <insert Volume path to input parquet directory>
+              - <insert Volume path to output delta directory>
+            run_as_repl: true
+          job_cluster_key: Job_cluster
+          libraries:
+            - jar: <insert Volume path to jar file>/parquet-to-delta-1.0.0.jar
+      job_clusters:
+        - job_cluster_key: Job_cluster
+          new_cluster:
+            cluster_name: ""
+            spark_version: 15.4.x-scala2.12
+            azure_attributes:
+              first_on_demand: 1
+              spot_bid_max_price: -1
+            node_type_id: Standard_D4ds_v5
+            spark_env_vars:
+              PYSPARK_PYTHON: /databricks/python3/bin/python3
+            enable_elastic_disk: true
+            data_security_mode: DATA_SECURITY_MODE_DEDICATED
+            runtime_engine: PHOTON
+            kind: CLASSIC_PREVIEW
+            is_single_node: true
+      queue:
+        enabled: true
+
